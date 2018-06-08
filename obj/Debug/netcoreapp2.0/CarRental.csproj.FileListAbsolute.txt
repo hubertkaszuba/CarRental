@@ -1,0 +1,12 @@
+C:\Users\Hubert\source\repos\CarRental\CarRental\bin\Debug\netcoreapp2.0\CarRental.deps.json
+C:\Users\Hubert\source\repos\CarRental\CarRental\bin\Debug\netcoreapp2.0\CarRental.runtimeconfig.json
+C:\Users\Hubert\source\repos\CarRental\CarRental\bin\Debug\netcoreapp2.0\CarRental.runtimeconfig.dev.json
+C:\Users\Hubert\source\repos\CarRental\CarRental\bin\Debug\netcoreapp2.0\CarRental.dll
+C:\Users\Hubert\source\repos\CarRental\CarRental\obj\Debug\netcoreapp2.0\CarRental.csprojResolveAssemblyReference.cache
+C:\Users\Hubert\source\repos\CarRental\CarRental\obj\Debug\netcoreapp2.0\CarRental.csproj.CoreCompileInputs.cache
+C:\Users\Hubert\source\repos\CarRental\CarRental\obj\Debug\netcoreapp2.0\CarRental.AssemblyInfoInputs.cache
+C:\Users\Hubert\source\repos\CarRental\CarRental\obj\Debug\netcoreapp2.0\CarRental.AssemblyInfo.cs
+C:\Users\Hubert\source\repos\CarRental\CarRental\bin\Debug\netcoreapp2.0\CarRental.pdb
+C:\Users\Hubert\source\repos\CarRental\CarRental\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Hubert\source\repos\CarRental\CarRental\obj\Debug\netcoreapp2.0\CarRental.dll
+C:\Users\Hubert\source\repos\CarRental\CarRental\obj\Debug\netcoreapp2.0\CarRental.pdb
