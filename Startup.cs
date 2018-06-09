@@ -95,7 +95,7 @@ namespace CarRental
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=UsersCars}/{action=Index}/{id?}");
             });
         }
     }

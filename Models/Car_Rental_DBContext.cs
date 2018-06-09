@@ -53,8 +53,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
                 entity.HasKey(e => e.IdRent);
 
                 entity.Property(e => e.IdRent)
-                    .HasColumnName("Id_rent")
-                    .ValueGeneratedNever();
+                    .HasColumnName("Id_rent");
 
                 entity.Property(e => e.IdCar).HasColumnName("Id_car");
 
