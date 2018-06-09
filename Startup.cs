@@ -68,7 +68,8 @@ namespace CarRental
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
+            var connection = @"Server=tcp:quickmealserv.database.windows.net,1433;Initial Catalog=Car_Rental_DB;Persist Security Info=False;User ID=Kierownik;Password=KieraS_246;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDbContext<Car_Rental_DBContext>(options => options.UseSqlServer(connection));
             services.AddMvc();
         }
 
