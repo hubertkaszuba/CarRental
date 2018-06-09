@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using CarRental.Models;
 using CarRental.Models.AccountViewModels;
 using CarRental.Services;
+using System.Linq;
 
 namespace CarRental.Controllers
 {
@@ -24,11 +25,13 @@ namespace CarRental.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        Car_Rental_DBContext C_Rdb = new Car_Rental_DBContext();
+
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IEmailSender emailSender,
+           IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
             _userManager = userManager;
@@ -225,13 +228,18 @@ namespace CarRental.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-
+                                      
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
+                    SHA2 sha2 = new SHA2();
+                    string haslo = SHA2.GenerateSHA256String(model.Password);
+                    var user_db = new Users { Login = model.Email, Password=haslo, Mail=model.Email};
+                    C_Rdb.Users.Add(user_db);
+                    C_Rdb.SaveChanges();
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);

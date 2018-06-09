@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace CarRental.Models
 {
-    public partial class Users
+    public partial class Users 
     {
         public Users()
         {
