@@ -223,7 +223,7 @@ namespace CarRental.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber=model.PhoneNumber };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -237,7 +237,8 @@ namespace CarRental.Controllers
                     _logger.LogInformation("User created a new account with password.");
                     SHA2 sha2 = new SHA2();
                     string haslo = SHA2.GenerateSHA256String(model.Password);
-                    var user_db = new Users { Login = model.Email, Password=haslo, Mail=model.Email};
+                    int x = Int32.Parse(model.PhoneNumber);
+                    var user_db = new Users { Login = model.Email, Password=haslo, Mail=model.Email, Name=model.Name, Surname=model.Surname, PhoneNumber=x};
                     C_Rdb.Users.Add(user_db);
                     C_Rdb.SaveChanges();
                     return RedirectToLocal(returnUrl);
