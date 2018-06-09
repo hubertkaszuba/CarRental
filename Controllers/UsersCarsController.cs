@@ -149,7 +149,10 @@ namespace CarRental.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var cars = await _context.Cars.SingleOrDefaultAsync(m => m.IdCar == id);
-            _context.Cars.Remove(cars);
+            var rents = await _context.Rent.SingleOrDefaultAsync(m => m.IdCar == id);
+            cars.Available = true;
+            _context.Rent.Remove(rents);
+            _context.Cars.Update(cars);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
