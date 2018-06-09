@@ -23,17 +23,5 @@ namespace CarRental.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        public string Name { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        public string Surname { get; set; }
-
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        public string TelephoneNumber { get; set; }
     }
 }
