@@ -68,6 +68,7 @@ namespace CarRental.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+        
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -223,7 +224,7 @@ namespace CarRental.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber=model.TelephoneNumber };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -237,7 +238,8 @@ namespace CarRental.Controllers
                     _logger.LogInformation("User created a new account with password.");
                     SHA2 sha2 = new SHA2();
                     string haslo = SHA2.GenerateSHA256String(model.Password);
-                    var user_db = new Users { Login = model.Email, Password=haslo, Mail=model.Email};
+                    int x = Int32.Parse(model.TelephoneNumber);
+                    var user_db = new Users { Login = model.Email, Password=haslo, Mail=model.Email, PhoneNumber=x , Name=model.Name, Surname=model.Surname };
                     C_Rdb.Users.Add(user_db);
                     C_Rdb.SaveChanges();
                     return RedirectToLocal(returnUrl);
