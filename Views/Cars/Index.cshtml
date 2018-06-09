@@ -4,25 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Spis samochodów</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Mark)
+                    Marka
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Model)
+                    Model
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Category)
+                    Kategoria pojazdu
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Available)
+                    Dostępność
                 </th>
             <th></th>
         </tr>
@@ -43,9 +41,7 @@
                 @Html.DisplayFor(modelItem => item.Available)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCar">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCar">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCar">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.IdCar">Szczegóły</a> 
             </td>
         </tr>
 }
