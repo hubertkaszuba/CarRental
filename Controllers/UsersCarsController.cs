@@ -26,7 +26,7 @@ namespace CarRental.Controllers
             List<Cars> c = new List<Cars>();
             foreach(var r in rents)
             {
-                c = await _context.Cars.Where(ca => ca.IdCar == r.IdCar).ToListAsync();
+                c.Add(_context.Cars.Where(ca => ca.IdCar == r.IdCar).FirstOrDefault());
             }
             
             return View(c);
