@@ -235,10 +235,9 @@ namespace CarRental.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                    SHA2 sha2 = new SHA2();
-                    string haslo = SHA2.GenerateSHA256String(model.Password);
+                    
                     int x = Int32.Parse(model.PhoneNumber);
-                    var user_db = new Users { Login = model.Email, Password=haslo, Mail=model.Email, Name=model.Name, Surname=model.Surname, PhoneNumber=x};
+                    var user_db = new Users { Login = model.Email, Password=model.Password, Mail=model.Email, Name=model.Name, Surname=model.Surname, PhoneNumber=x};
                     C_Rdb.Users.Add(user_db);
                     C_Rdb.SaveChanges();
                     return RedirectToLocal(returnUrl);
