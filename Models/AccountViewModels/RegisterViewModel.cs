@@ -16,24 +16,27 @@ namespace CarRental.Models.AccountViewModels
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Haslo")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potwierdz haslo")]
+        [Compare("Password", ErrorMessage = "Wprowadzone hasla nie sa identyczne")]
         public string ConfirmPassword { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
+        [Display(Name = "Imie")]
         public string Name { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
+        [Display(Name = "Nazwisko")]
         public string Surname { get; set; }
 
         [Required]
         [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Numer telefonu")]
         public string PhoneNumber { get; set; }
 
     }

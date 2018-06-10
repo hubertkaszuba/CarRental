@@ -459,11 +459,11 @@ namespace CarRental.Controllers
         {
             if (Url.IsLocalUrl(returnUrl))
             {
-                return Redirect(returnUrl);
+                return RedirectToAction(nameof(UsersCarsController.Index), "UsersCars");
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(UsersCarsController.Index), "UsersCars");
             }
         }
 

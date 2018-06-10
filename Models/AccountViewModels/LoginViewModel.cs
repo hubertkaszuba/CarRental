@@ -13,10 +13,11 @@ namespace CarRental.Models.AccountViewModels
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Haslo")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Zapamietaj mnie")]
         public bool RememberMe { get; set; }
     }
 }

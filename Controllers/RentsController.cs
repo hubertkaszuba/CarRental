@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarRental.Controllers
 {
+    [Authorize]
     public class RentsController : Controller
     {
         private readonly Car_Rental_DBContext _context;
