@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CarRental.Models.Rent>
+﻿@model IEnumerable<CarRental.Models.Cars>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,29 +13,42 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarNavigation)
+                Marka
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LoginNavigation)
+                Model
+            </th>
+            <th>
+                Kategoria
+            </th>
+            <th>
+                Dostępność
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCarNavigation.IdCar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoginNavigation.Login)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdRent">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdRent">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdRent">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mark)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Available)
+                </td>
+                <td>
+                    
+                    <a asp-action="Details" asp-route-id="@item.IdCar">Details</a> |
+                    
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

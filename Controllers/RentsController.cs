@@ -21,8 +21,13 @@ namespace CarRental.Controllers
         // GET: Rents
         public async Task<IActionResult> Index()
         {
-            var car_Rental_DBContext = _context.Rent.Include(r => r.IdCarNavigation).Include(r => r.LoginNavigation);
-            return View(await car_Rental_DBContext.ToListAsync());
+            var rents = _context.Cars.Where(r => r.Available == true);
+            List<Cars> c = new List<Cars>();
+            foreach (var r in rents)
+            {
+                c.Add(_context.Cars.Where(ca => ca.IdCar == r.IdCar).FirstOrDefault());
+            }
+            return View(c);
         }
 
         // GET: Rents/Details/5
@@ -32,24 +37,24 @@ namespace CarRental.Controllers
             {
                 return NotFound();
             }
-
-            var rent = await _context.Rent
-                .Include(r => r.IdCarNavigation)
-                .Include(r => r.LoginNavigation)
-                .SingleOrDefaultAsync(m => m.IdRent == id);
-            if (rent == null)
+            var user = HttpContext.User.Identity.Name;
+            var cars = await _context.Cars
+                .SingleOrDefaultAsync(m => m.IdCar == id);
+            if (cars == null)
             {
                 return NotFound();
             }
 
-            return View(rent);
+            return View(cars);
         }
 
         // GET: Rents/Create
-        public IActionResult Create()
+        public IActionResult Create(string id)
         {
-            ViewData["IdCar"] = new SelectList(_context.Cars, "IdCar", "IdCar");
-            ViewData["Login"] = new SelectList(_context.Users, "Login", "Login");
+            
+            var user = HttpContext.User.Identity.Name;
+            ViewData["IdCar"] = id;
+            ViewData["Login"] = user;
             return View();
         }
 
@@ -60,6 +65,8 @@ namespace CarRental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdRent,IdCar,Login")] Rent rent)
         {
+            var user = HttpContext.User.Identity.Name;
+            rent.Login = user;
             if (ModelState.IsValid)
             {
                 _context.Add(rent);
