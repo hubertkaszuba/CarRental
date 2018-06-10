@@ -23,7 +23,7 @@ namespace CarRental.Controllers
 
             return View();
         }
-
+        [AllowAnonymous]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
