@@ -44,8 +44,16 @@ namespace CarRental.Controllers
             {
                 return NotFound();
             }
+            cars.Available = false;
+            Rent s = new Rent {Login=user, IdCar=id };
+            _context.Update(cars);
+            await _context.SaveChangesAsync();
+            _context.Add(s);
+            await _context.SaveChangesAsync();
 
-            return View(cars);
+            var cars2 = await _context.Cars
+                .SingleOrDefaultAsync(m => m.IdCar == id);
+            return View(cars2);
         }
 
         // GET: Rents/Create

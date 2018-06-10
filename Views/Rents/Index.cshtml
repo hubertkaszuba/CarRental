@@ -4,11 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Dostępne do wypożyczenia samochody</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +43,7 @@
                 </td>
                 <td>
                     
-                    <a asp-action="Details" asp-route-id="@item.IdCar">Details</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdCar">Wypożycz</a> 
                     
                 </td>
             </tr>
