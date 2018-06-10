@@ -74,8 +74,21 @@ namespace CarRental
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext application, Car_Rental_DBContext car, UserManager<ApplicationUser> userManager)
         {
+            
+            List<ApplicationUser> list = application.Users.ToList();
+            List<Users> list2 = car.Users.ToList();
+
+            foreach(var u in list2)
+            {
+                if (!list.Exists(x => x.Email == u.Login))
+                {
+                    var user = new ApplicationUser { UserName = u.Login, Email = u.Login, PhoneNumber = u.PhoneNumber.ToString() };
+                    var result =  userManager.CreateAsync(user, u.Password);
+                }
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
